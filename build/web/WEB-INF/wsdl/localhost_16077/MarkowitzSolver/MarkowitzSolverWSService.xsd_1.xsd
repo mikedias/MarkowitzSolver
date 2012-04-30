@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-752-. --><xs:schema xmlns:tns="http://service/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://service/">
+
+<xs:element name="IOException" type="tns:IOException" />
+
+<xs:element name="SolverModel" type="tns:SolverModel" />
+
+<xs:element name="SolverModelResponse" type="tns:SolverModelResponse" />
+
+<xs:complexType name="SolverModel">
+<xs:sequence>
+<xs:element name="pRisk" type="xs:double" />
+<xs:element name="pValue" type="xs:double" />
+<xs:element name="pStartDt" type="xs:dateTime" minOccurs="0" />
+<xs:element name="pEndDt" type="xs:dateTime" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="SolverModelResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:stockProportion" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="stockProportion">
+<xs:sequence>
+<xs:element name="proportion" type="xs:double" />
+<xs:element name="stock" type="xs:string" minOccurs="0" />
+<xs:element name="value" type="xs:double" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="IOException">
+<xs:sequence>
+<xs:element name="message" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

@@ -1,0 +1,7 @@
+br.com.MarkowitzSolver.controller
+br.com.MarkowitzSolver.model
+br.com.MarkowitzSolver.priceProvider
+br.com.MarkowitzSolver.service
+br.com.MarkowitzSolver.util
+org.netbeans.rest.application.config
+service_client1

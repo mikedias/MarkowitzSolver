@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://service.MarkowitzSolver.com.br/" xmlns:tns="http://service.MarkowitzSolver.com.br/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="Exception" nillable="true" type="tns:exceptionBean"/>
+
+  <xs:element name="SolverModel" nillable="true" type="tns:solverModel"/>
+
+  <xs:element name="SolverModelResponse" nillable="true" type="tns:solverModelResponse"/>
+
+  <xs:complexType name="solverModel">
+    <xs:sequence>
+      <xs:element name="PEndDt" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="PRisk" type="xs:double"/>
+      <xs:element name="PStartDt" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="PValue" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="solverModelResponse">
+    <xs:sequence>
+      <xs:element name="return" type="tns:solution" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="solution">
+    <xs:sequence>
+      <xs:element name="portifolioRisk" type="xs:double"/>
+      <xs:element name="stockInformation" type="tns:stockInformation" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="stockProportion" type="tns:stockProportion" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="stockInformation">
+    <xs:sequence>
+      <xs:element name="correlations" type="tns:stockCorrelation" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="covariances" type="tns:stockCovariance" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="meanReturn" type="xs:double"/>
+      <xs:element name="prices" type="tns:stockPrice" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="stdDeviation" type="xs:double"/>
+      <xs:element name="stock" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="stockCorrelation">
+    <xs:sequence>
+      <xs:element name="correlation" type="xs:double"/>
+      <xs:element name="stock" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="stockCovariance">
+    <xs:sequence>
+      <xs:element name="covariance" type="xs:double"/>
+      <xs:element name="stock" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="stockPrice">
+    <xs:sequence>
+      <xs:element name="date" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="price" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="stockProportion">
+    <xs:sequence>
+      <xs:element name="proportion" type="xs:double"/>
+      <xs:element name="stock" type="xs:string" minOccurs="0"/>
+      <xs:element name="value" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="exceptionBean">
+    <xs:sequence>
+      <xs:element name="message" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+
